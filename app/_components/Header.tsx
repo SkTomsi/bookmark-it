@@ -31,10 +31,12 @@ export default async function Header() {
           </div>
         )}
       </div>
-      <div className="flex gap-x-3">
-        <CreateFolderModal />
-        <AccentButton>Add Bookmark</AccentButton>
-      </div>
+      {user && (
+        <div className="flex gap-x-3">
+          <CreateFolderModal />
+          <AccentButton>Add Bookmark</AccentButton>
+        </div>
+      )}
     </nav>
   );
 }
