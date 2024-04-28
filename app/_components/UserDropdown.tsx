@@ -22,9 +22,8 @@ export function UserDropdown({ userImage }: iAppProps) {
           <img
             src={userImage!}
             alt="default pfp"
-            className="rounded-full hidden lg:block w-8 h-8"
+            className="rounded-full w-8 h-8"
           />
-          <MenuIcon className="w-6 h-6 lg:h-5 lg:w-5"></MenuIcon>
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
