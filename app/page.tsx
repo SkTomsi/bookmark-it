@@ -5,6 +5,8 @@ import Link from 'next/link';
 import bookmarkImg from '../public/bookmark.png';
 import linkImg from '../public/link.png';
 
+export const dynamic = 'force-dynamic';
+
 export default function Home() {
   return (
     <main className="h-full w-full px-20 flex flex-col items-center justify-center relative mt-40">

@@ -3,8 +3,6 @@ import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { NextResponse } from 'next/server';
 import { generateUsername } from 'unique-username-generator';
 
-export const dynamic = 'force-dynamic';
-
 export async function GET() {
   const { getUser } = getKindeServerSession();
 
