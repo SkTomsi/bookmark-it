@@ -31,5 +31,7 @@ export async function GET() {
     });
   }
 
-  return NextResponse.redirect('http://localhost:3000/bookmarks');
+  console.log(process.env.NODE_ENV, 'CURRENT ENV');
+
+  return NextResponse.redirect(`${process.env.KINDE_SITE_URL}/bookmarks`);
 }
