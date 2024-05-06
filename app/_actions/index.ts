@@ -2,8 +2,9 @@
 
 import { Prisma } from '@prisma/client';
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
-import db from './_lib/db';
-import { CreateFolderSchema } from './_lib/validations';
+import db from '../_lib/db';
+import { CreateFolderSchema } from '../_lib/validations';
+import { revalidatePath } from 'next/cache';
 
 export async function IsAuthorized() {
   const { getUser } = getKindeServerSession();
@@ -36,6 +37,8 @@ export async function CreateFolder(prevState: any, formData: unknown) {
         userId: user?.id,
       },
     });
+
+    revalidatePath('/bookmarks');
 
     return {
       message: 'success',

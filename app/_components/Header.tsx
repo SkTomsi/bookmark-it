@@ -13,24 +13,7 @@ export default async function Header() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   return (
-    <nav className="h-[10vh] flex items-center justify-between px-10">
-      <div className="flex gap-x-4 items-center">
-        <ModeToggle />
-        {user ? (
-          <>
-            <UserDropdown userImage={user.picture} />
-          </>
-        ) : (
-          <div className="flex items-center gap-x-4">
-            <Button variant="secondary" asChild>
-              <RegisterLink>Sign up</RegisterLink>
-            </Button>
-            <Button asChild>
-              <LoginLink>Log in</LoginLink>
-            </Button>
-          </div>
-        )}
-      </div>
+    <nav className="flex items-center justify-end  py-4 ">
       {user && (
         <div className="flex gap-x-3">
           <CreateFolderModal />

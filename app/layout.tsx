@@ -32,7 +32,7 @@ export default function RootLayout({
           <NextTopLoader color="#7c3aed" showSpinner={false} />
           <Toaster richColors />
 
-          <Header />
+          {/* <Header /> */}
           {children}
         </ThemeProvider>
       </body>
