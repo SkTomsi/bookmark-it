@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-gradient-to-b from-purple-300 to-purple-700 text-white border border-purple-800 font-medium relative h-10 w-auto py-2 px-4 bg-gradient-to-b from-purple-300 to-purple-700 rounded-md p-[1px] border-[2px] border-purple-800',
+          ' text-white  font-medium relative h-10 w-auto py-2 px-4 bg-gradient-to-b from-brand-purple-300 to-brand-purple-500 rounded-md p-[1px] border-[2px] border-purple-800',
       },
       size: {
         default: 'h-10 px-4 py-2',

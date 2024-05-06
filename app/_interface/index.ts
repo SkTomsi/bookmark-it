@@ -1,7 +1,7 @@
 import { ZodDate } from 'zod';
 
 interface List {
-  id?: string;
+  id: string;
   name: string;
   description?: string;
   createdAt?: Date;

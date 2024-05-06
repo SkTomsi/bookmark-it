@@ -8,6 +8,7 @@ import { UserDropdown } from './UserDropdown';
 import { Button } from './ui/button';
 import { CreateFolderModal } from './modals/CreateFolderModal';
 import { AccentButton } from './ui/AccentButton';
+import { BookmarkPlus } from 'lucide-react';
 
 export default async function Header() {
   const { getUser } = getKindeServerSession();
@@ -17,7 +18,10 @@ export default async function Header() {
       {user && (
         <div className="flex gap-x-3">
           <CreateFolderModal />
-          <AccentButton>Add Bookmark</AccentButton>
+          <AccentButton>
+            <BookmarkPlus />
+            Add Bookmark
+          </AccentButton>
         </div>
       )}
     </nav>

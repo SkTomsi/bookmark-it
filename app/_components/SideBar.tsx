@@ -5,8 +5,8 @@ import { getAllFolders } from '../_data-access';
 
 export default async function Sidebar() {
   const defaultList = [
-    { name: 'Favourites', emoji: <Star /> },
-    { name: 'Reading Lists', emoji: <BookText /> },
+    { id: '1', name: 'Favourites', emoji: <Star /> },
+    { id: '2', name: 'Reading Lists', emoji: <BookText /> },
   ];
 
   const { folders } = await getAllFolders();

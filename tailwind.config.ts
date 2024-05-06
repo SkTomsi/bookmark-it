@@ -52,6 +52,10 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        'brand-purple': {
+          '300': '#9D54D5',
+          '500': '#6C00C1',
+        },
         'brand-gray': {
           '500': '#222222',
         },
