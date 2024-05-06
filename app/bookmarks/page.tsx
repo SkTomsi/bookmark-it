@@ -1,5 +1,6 @@
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { redirect } from 'next/navigation';
+import Sidebar from '../_components/SideBar';
 
 export default async function BoookmarksPage() {
   const { isAuthenticated } = getKindeServerSession();
@@ -11,9 +12,11 @@ export default async function BoookmarksPage() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   return (
-    <div className="w-full min- mx-auto flex bg-purple-50">
-      <div className="w-[20%] bg-slate-100">1 </div>
-      <div className="w-[80%] bg-slate-500"> 2</div>
+    <div className="flex  m-5">
+      <div className="w-[20%] bg-white">
+        <Sidebar />
+      </div>
+      <div className="w-[80%] "></div>
     </div>
   );
 }

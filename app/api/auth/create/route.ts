@@ -1,4 +1,4 @@
-import db from '@/app/lib/db';
+import db from '@/app/_lib/db';
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { NextResponse } from 'next/server';
 import { generateUsername } from 'unique-username-generator';

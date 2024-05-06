@@ -2,9 +2,8 @@
 
 import { Prisma } from '@prisma/client';
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
-import db from './lib/db';
-import { z } from 'zod';
-import { CreateFolderSchema, Folder } from './lib/validations';
+import db from './_lib/db';
+import { CreateFolderSchema } from './_lib/validations';
 
 export async function IsAuthorized() {
   const { getUser } = getKindeServerSession();
@@ -27,8 +26,6 @@ export async function CreateFolder(prevState: any, formData: unknown) {
       status: false,
     };
   }
-
-  console.log(validatedData);
 
   try {
     await db.folder.create({

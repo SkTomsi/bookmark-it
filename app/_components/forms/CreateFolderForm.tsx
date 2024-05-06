@@ -8,7 +8,7 @@ import { Label } from '../ui/label';
 import { toast } from 'sonner';
 import { useFormState } from 'react-dom';
 import { CreateFolder } from '@/app/_actions';
-import { CreateFolderSchema } from '@/app/lib/validations';
+import { CreateFolderSchema } from '@/app/_lib/validations';
 
 const initialState = {
   message: '',
