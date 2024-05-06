@@ -11,11 +11,13 @@ interface ListItemprops {
 
 function ListItem({ name, emoji }: ListItemprops) {
   return (
-    <div className="flex p-2 items-center gap-x-2">
-      <div className="border-2 border-brand-neutral-4 p-1 text-brand-neutral-8 rounded-[4px]">
+    <div className="flex p-1 items-center border border-transparent gap-x-2 hover:border hover:border-brand-neutral-5 hover:bg-brand-neutral-3 group rounded-[4px]">
+      <div className="border border-brand-neutral-4 p-1 text-brand-neutral-8 rounded-[4px] group-hover:bg-brand-neutral-1 bg-white group-hover:border-brand-neutral-5 ">
         {emoji}
       </div>
-      <div className="text-sm font-medium text-brand-neutral-8">{name}</div>
+      <div className="text-sm font-medium text-brand-neutral-8 group-hover:font-bold">
+        {name.length > 28 ? `${name.slice(0, 28)}...` : name}
+      </div>
     </div>
   );
 }

@@ -13,7 +13,7 @@ export default async function Header() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   return (
-    <nav className="flex items-center justify-end  py-4 ">
+    <nav className="flex items-center justify-end  py-4">
       {user && (
         <div className="flex gap-x-3">
           <CreateFolderModal />
