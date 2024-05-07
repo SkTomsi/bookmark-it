@@ -73,6 +73,12 @@ export async function CreateBookmark(prevState: any, formData: unknown) {
   }
 
   try {
+    const metadata = await axios.post('/api/metadata', {
+      url: validatedData.data.url,
+    });
+
+    console.log(metadata);
+
     await db.bookmark.create({
       data: {
         url: validatedData.data.url,

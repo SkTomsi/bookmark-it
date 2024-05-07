@@ -6,7 +6,5 @@ export async function POST(req: Request) {
 
   const data = await unfurl(url);
 
-  console.log(data);
-
   return NextResponse.json(data);
 }
