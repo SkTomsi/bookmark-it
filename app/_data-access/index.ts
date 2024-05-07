@@ -1,5 +1,5 @@
 import { IsAuthorized } from '../_actions';
-import db from '../_lib/db';
+import db from '../lib/db';
 
 export async function getAllFolders() {
   const user = await IsAuthorized();

@@ -1,14 +1,6 @@
-import {
-  getKindeServerSession,
-  LoginLink,
-  RegisterLink,
-} from '@kinde-oss/kinde-auth-nextjs/server';
-import { ModeToggle } from './ui/mode-toggle';
-import { UserDropdown } from './UserDropdown';
-import { Button } from './ui/button';
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { CreateFolderModal } from './modals/CreateFolderModal';
-import { AccentButton } from './ui/AccentButton';
-import { BookmarkPlus } from 'lucide-react';
+import { CreateBookmarkModal } from './modals/CreateBookmarkModal';
 
 export default async function Header() {
   const { getUser } = getKindeServerSession();
@@ -18,10 +10,7 @@ export default async function Header() {
       {user && (
         <div className="flex gap-x-3">
           <CreateFolderModal />
-          <AccentButton>
-            <BookmarkPlus />
-            Add Bookmark
-          </AccentButton>
+          <CreateBookmarkModal />
         </div>
       )}
     </nav>

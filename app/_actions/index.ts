@@ -2,8 +2,8 @@
 
 import { Prisma } from '@prisma/client';
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
-import db from '../_lib/db';
-import { CreateFolderSchema } from '../_lib/validations';
+import db from '../lib/db';
+import { CreateBookmarkSchema, CreateFolderSchema } from '../lib/validations';
 import { revalidatePath } from 'next/cache';
 
 export async function IsAuthorized() {
@@ -49,6 +49,48 @@ export async function CreateFolder(prevState: any, formData: unknown) {
       if (e.code === 'P2002') {
         return {
           message: 'This folder is already in use!',
+          status: 'error',
+        };
+      }
+    }
+    throw e;
+  }
+}
+export async function CreateBookmark(prevState: any, formData: unknown) {
+  const user = await IsAuthorized();
+
+  if (!user) {
+    console.log('UNAUTHORIZED');
+  }
+
+  const validatedData = CreateBookmarkSchema.safeParse(formData);
+
+  if (!validatedData.success) {
+    return {
+      message: 'error',
+      status: false,
+    };
+  }
+
+  try {
+    await db.bookmark.create({
+      data: {
+        url: validatedData.data.url,
+        folderId: validatedData.data.folderId,
+      },
+    });
+
+    revalidatePath('/bookmarks');
+
+    return {
+      message: 'success',
+      status: true,
+    };
+  } catch (e) {
+    if (e instanceof Prisma.PrismaClientKnownRequestError) {
+      if (e.code === 'P2002') {
+        return {
+          message: 'This bookmark already exists!',
           status: 'error',
         };
       }

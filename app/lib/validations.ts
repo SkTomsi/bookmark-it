@@ -11,3 +11,10 @@ export const CreateFolderSchema = z.object({
 });
 
 export type Folder = z.infer<typeof CreateFolderSchema>;
+
+export const CreateBookmarkSchema = z.object({
+  url: z.string().url(),
+  folderId: z.string(),
+});
+
+export type Bookmark = z.infer<typeof CreateBookmarkSchema>;
