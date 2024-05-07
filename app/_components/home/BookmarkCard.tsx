@@ -30,7 +30,7 @@ function BookmarkCard({ bookmark }: { bookmark: Bookmark }) {
   console.log(favicon);
 
   return (
-    <Link href={bookmark.url}>
+    <Link href={bookmark.url} referrerPolicy="no-referrer" target="_blank">
       <div
         key={bookmark.id}
         className="border border-brand-neutral-5 bg-white rounded-[8px] overflow-hidden"
@@ -44,11 +44,7 @@ function BookmarkCard({ bookmark }: { bookmark: Bookmark }) {
           <div>
             <img src={favicon} width={20} height={20} alt={'ogimage'} />
           </div>
-          <div className="text-nowrap">
-            {bookmark.url.length > 20
-              ? bookmark.url.slice(0, 40)
-              : bookmark.url}
-          </div>
+          <div className="text-nowrap">{new URL(bookmark.url).hostname}</div>
         </div>
       </div>
     </Link>
