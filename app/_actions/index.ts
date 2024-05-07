@@ -5,6 +5,7 @@ import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import db from '../lib/db';
 import { CreateBookmarkSchema, CreateFolderSchema } from '../lib/validations';
 import { revalidatePath } from 'next/cache';
+import axios from 'axios';
 
 export async function IsAuthorized() {
   const { getUser } = getKindeServerSession();
@@ -73,12 +74,6 @@ export async function CreateBookmark(prevState: any, formData: unknown) {
   }
 
   try {
-    const metadata = await axios.post('/api/metadata', {
-      url: validatedData.data.url,
-    });
-
-    console.log(metadata);
-
     await db.bookmark.create({
       data: {
         url: validatedData.data.url,

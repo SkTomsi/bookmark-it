@@ -7,10 +7,7 @@ import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { toast } from 'sonner';
 import { useFormState } from 'react-dom';
-import {
-  CreateBookmarkSchema,
-  CreateFolderSchema,
-} from '@/app/lib/validations';
+import { CreateBookmarkSchema } from '@/app/lib/validations';
 import { CreateBookmark } from '@/app/_actions';
 import {
   Select,
@@ -34,12 +31,14 @@ interface FolderOption {
 
 export function CreateBookmarkForm({
   setOpen,
+  id,
 }: {
+  id: string;
   setOpen: Dispatch<SetStateAction<boolean>>;
 }) {
   const [state, formAction] = useFormState(CreateBookmark, initialState);
   const [options, setOptions] = useState<FolderOption[]>([]);
-  const [folderId, setFolderId] = useState<string>('');
+  const [folderId, setFolderId] = useState<string>(id);
 
   useEffect(() => {
     async function getFolderOptions() {
@@ -66,7 +65,7 @@ export function CreateBookmarkForm({
   }, [state, setOpen]);
 
   const AddBookmarkAction = async (formData: FormData) => {
-    formData.append('folderId', folderId);
+    formData.append('folderId', folderId as string);
 
     const form = Object.fromEntries(formData.entries());
 
@@ -102,7 +101,10 @@ export function CreateBookmarkForm({
             <Label htmlFor="folder" className="text-right">
               Folder
             </Label>
-            <Select onValueChange={(value) => setFolderId(value)}>
+            <Select
+              onValueChange={(value) => setFolderId(value)}
+              defaultValue={id}
+            >
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Select your folder" />
               </SelectTrigger>
