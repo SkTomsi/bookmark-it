@@ -73,7 +73,6 @@ export function CreateBookmarkForm({
     const validatedData = CreateBookmarkSchema.safeParse(form);
 
     if (!validatedData.success) {
-      console.log(validatedData.error.issues);
       validatedData.error.issues.forEach((issue) => {
         toast.error(issue.message);
       });
@@ -82,8 +81,6 @@ export function CreateBookmarkForm({
 
     formAction(validatedData.data);
   };
-
-  console.log(folderId);
 
   return (
     <>

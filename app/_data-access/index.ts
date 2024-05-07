@@ -19,3 +19,22 @@ export async function getAllFolders() {
 
   return { folders };
 }
+
+export async function getBookmarks(id: string) {
+  const user = await IsAuthorized();
+
+  if (!user) {
+    throw new Error('unauthorized');
+  }
+
+  const bookmarks = await db.bookmark.findMany({
+    where: {
+      folderId: id,
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
+
+  return { bookmarks };
+}

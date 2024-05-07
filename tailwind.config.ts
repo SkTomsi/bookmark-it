@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      aspectRatio: {
+        ogimage: '1.91 / 1',
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

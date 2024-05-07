@@ -38,7 +38,6 @@ export function CreateFolderForm({
     const validatedData = CreateFolderSchema.safeParse(form);
 
     if (!validatedData.success) {
-      console.log(validatedData.error.issues);
       validatedData.error.issues.forEach((issue) => {
         toast.error(issue.message);
       });

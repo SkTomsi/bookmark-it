@@ -18,12 +18,8 @@ export function UserDropdown({ userImage }: iAppProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <div className="rounded-full border-4 px-1 py-1 lg:py-1 flex items-center gap-x-3 border-primary">
-          <img
-            src={userImage!}
-            alt="default pfp"
-            className="rounded-full w-8 h-8"
-          />
+        <div className="rounded-full border-4 px-1 py-1 lg:py-1 flex items-center gap-x-3 border-primary h-12 w-12">
+          <img src={userImage!} alt="default pfp" className="rounded-full " />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent>

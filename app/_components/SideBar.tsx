@@ -1,6 +1,6 @@
 import { BookText, Star } from 'lucide-react';
-import AvatarCard from './bookmarks/AvatarCard';
-import FolderLists from './bookmarks/FolderLists';
+import AvatarCard from './home/AvatarCard';
+import FolderLists from './home/FolderLists';
 import { getAllFolders } from '../_data-access';
 
 export default async function Sidebar() {

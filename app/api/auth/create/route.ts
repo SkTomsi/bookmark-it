@@ -31,7 +31,5 @@ export async function GET() {
     });
   }
 
-  console.log(process.env.NODE_ENV, 'CURRENT ENV');
-
   return NextResponse.redirect(`${process.env.KINDE_SITE_URL}/bookmarks`);
 }
