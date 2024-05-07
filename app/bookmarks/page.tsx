@@ -11,4 +11,6 @@ export default async function BoookmarksPage() {
 
   const { getUser } = getKindeServerSession();
   const user = await getUser();
+
+  return <div>Please select a folder</div>;
 }

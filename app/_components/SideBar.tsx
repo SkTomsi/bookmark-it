@@ -11,8 +11,6 @@ export default async function Sidebar() {
 
   const { folders } = await getAllFolders();
 
-  console.log(folders);
-
   return (
     <div className="flex flex-col gap-y-4">
       <AvatarCard />
