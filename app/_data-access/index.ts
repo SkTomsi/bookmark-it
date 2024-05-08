@@ -1,3 +1,4 @@
+'use server'
 import { IsAuthorized } from '../_actions';
 import db from '../lib/db';
 
