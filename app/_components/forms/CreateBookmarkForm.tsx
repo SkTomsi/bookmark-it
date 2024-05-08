@@ -17,6 +17,7 @@ import {
   SelectValue,
 } from '../ui/select';
 import { FolderOptionList } from '@/app/_data-access/utils';
+import { SubmitButton } from './FormButtons';
 
 const initialState = {
   message: '',
@@ -120,7 +121,7 @@ export function CreateBookmarkForm({
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit">Save changes</Button>
+          <SubmitButton text="Save" />
         </DialogFooter>
       </form>
     </>

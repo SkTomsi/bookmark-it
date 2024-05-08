@@ -31,7 +31,7 @@ export default function Home() {
         </p>
       </div>
       <div className="mt-10 ">
-        <Link href={'/bookmarks'}>
+        <Link href={'/api/auth/login'}>
           <Button className="gap-x-1">
             Get Started <Rocket />
           </Button>

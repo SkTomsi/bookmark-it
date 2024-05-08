@@ -9,6 +9,7 @@ import { toast } from 'sonner';
 import { useFormState } from 'react-dom';
 import { CreateFolder } from '@/app/_actions';
 import { CreateFolderSchema } from '@/app/lib/validations';
+import { SubmitButton } from './FormButtons';
 
 const initialState = {
   message: '',
@@ -89,7 +90,7 @@ export function CreateFolderForm({
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit">Save changes</Button>
+          <SubmitButton text="Create" />
         </DialogFooter>
       </form>
     </>

@@ -1,11 +1,12 @@
 'use client';
 
 import SidebarContainer from './SidebarContainer';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { List } from '@/app/_interface';
 import { CreateFolderModal } from '../modals/CreateFolderModal';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { Skeleton } from '../ui/skeleton';
 
 interface ListItemprops {
   name: string;
@@ -54,32 +55,47 @@ interface props {
   list: List[];
 }
 
-export default function FolderLists({ listHeading, list }: props) {
+export function FolderLists({ listHeading, list }: props) {
   const { id } = useParams();
 
   return (
     <SidebarContainer>
-      <div className="flex flex-col gap-y-2">
-        <h1 className="text-sm  text-brand-gray-500 font-bold">
-          {listHeading}
-        </h1>
-        <div className="">
-          {list.length === 0 && (
-            <div>
-              Oops, no folders created yet! <CreateFolderModal />
-            </div>
-          )}
-          {list.map((list, i) => (
-            <ListItem
-              key={i}
-              emoji={list.emoji}
-              name={list.name}
-              id={list.id}
-              activeId={id}
-            />
-          ))}
+      <Suspense fallback={<FolderLists.loading />}>
+        <div className="flex flex-col gap-y-2">
+          <h1 className="text-sm  text-brand-gray-500 font-bold">
+            {listHeading}
+          </h1>
+          <div className="">
+            {list.length === 0 && (
+              <div>
+                Oops, no folders created yet! <CreateFolderModal />
+              </div>
+            )}
+            {list.map((list, i) => (
+              <ListItem
+                key={i}
+                emoji={list.emoji}
+                name={list.name}
+                id={list.id}
+                activeId={id}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      </Suspense>
     </SidebarContainer>
   );
 }
+
+FolderLists.loading = function () {
+  return (
+    <>
+      {[...new Array(4)].map((_, i) => (
+        <div className="flex flex-col space-y-3" key={i}>
+          <Skeleton className="h-4 w-[250px]" />
+          <Skeleton className="h-4 w-[250px]" />
+        </div>
+      ))}
+    </>
+  );
+};

@@ -1,6 +1,8 @@
-'use server'
+import 'server-only';
+
 import { IsAuthorized } from '../_actions';
 import db from '../lib/db';
+import { redirect } from 'next/navigation';
 
 export async function getAllFolders() {
   const user = await IsAuthorized();
@@ -25,7 +27,7 @@ export async function getBookmarks(id: string) {
   const user = await IsAuthorized();
 
   if (!user) {
-    throw new Error('unauthorized');
+    redirect('/');
   }
 
   const bookmarks = await db.bookmark.findMany({
