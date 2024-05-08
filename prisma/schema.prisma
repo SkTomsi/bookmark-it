@@ -37,9 +37,11 @@ model Folder {
 }
 
 model Bookmark {
-  id        String   @id @default(uuid())
-  url       String
-  createdAt DateTime @default(now())
-  Folder    Folder?  @relation(fields: [folderId], references: [id])
-  folderId  String?
+  id         String   @id @default(uuid())
+  url        String
+  createdAt  DateTime @default(now())
+  Folder     Folder?  @relation(fields: [folderId], references: [id])
+  folderId   String?
+  iconUrl    String?
+  ogImageUrl String?
 }

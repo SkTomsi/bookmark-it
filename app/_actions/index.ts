@@ -5,7 +5,7 @@ import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import db from '../lib/db';
 import { CreateBookmarkSchema, CreateFolderSchema } from '../lib/validations';
 import { revalidatePath } from 'next/cache';
-import axios from 'axios';
+import { unfurl } from 'unfurl.js';
 
 export async function IsAuthorized() {
   const { getUser } = getKindeServerSession();
@@ -74,10 +74,14 @@ export async function CreateBookmark(prevState: any, formData: unknown) {
   }
 
   try {
+    const result = await unfurl(validatedData.data.url);
+
     await db.bookmark.create({
       data: {
         url: validatedData.data.url,
         folderId: validatedData.data.folderId,
+        iconUrl: result.favicon,
+        ogImageUrl: result.open_graph.images?.[0].url ?? result.open_graph.url,
       },
     });
 

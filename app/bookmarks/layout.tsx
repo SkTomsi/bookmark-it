@@ -1,6 +1,8 @@
 import Header from '../_components/Header';
 import Sidebar from '../_components/SideBar';
 
+export const dynamic = 'force-dynamic';
+
 export default function BookmarkPageLayout({
   children,
 }: {
