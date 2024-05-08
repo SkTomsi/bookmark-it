@@ -1,7 +1,8 @@
 import { BookmarkList } from '@/app/_components/home/BookmarkList';
 import BookmarksContainer from '@/app/_components/home/BookmarksContainer';
-import { getBookmarks } from '@/app/_data-access';
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
+
+export const dynamic = 'force-dynamic';
 
 export default function Bookmarks({
   params: { id },
