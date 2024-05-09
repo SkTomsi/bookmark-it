@@ -4,7 +4,6 @@ import { Rocket } from 'lucide-react';
 import Link from 'next/link';
 import bookmarkImg from '../public/bookmark.png';
 import linkImg from '../public/link.png';
-import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
 
 export default function Home() {
   return (
@@ -30,20 +29,11 @@ export default function Home() {
         </p>
       </div>
       <div className="mt-10 ">
-        <SignedOut>
-          <SignInButton forceRedirectUrl={'/bookmarks'}>
-            <Button className="gap-x-1">
-              Sign Up <Rocket />
-            </Button>
-          </SignInButton>
-        </SignedOut>
-        <SignedIn>
-          <Link href={'/bookmarks'}>
-            <Button className="gap-x-1">
-              Get Started <Rocket />
-            </Button>
-          </Link>
-        </SignedIn>
+        <Link href={'/bookmarks'}>
+          <Button className="gap-x-1">
+            Get Started <Rocket />
+          </Button>
+        </Link>
       </div>
     </main>
   );
