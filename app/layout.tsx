@@ -6,6 +6,7 @@ import NextTopLoader from 'nextjs-toploader';
 import { ThemeProvider } from './_components/ui/theme-provider';
 import Header from './_components/Header';
 import { Toaster } from './_components/sonner';
+import { ClerkProvider } from '@clerk/nextjs';
 
 const inter = Inter({ subsets: ['latin'] });
 const manrope = Manrope({ subsets: ['latin'] });
@@ -29,11 +30,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <NextTopLoader color="#7c3aed" showSpinner={false} />
-          <Toaster richColors />
+          <ClerkProvider signInFallbackRedirectUrl="/bookmarks">
+            <NextTopLoader color="#7c3aed" showSpinner={false} />
+            <Toaster richColors />
 
-          {/* <Header /> */}
-          {children}
+            {/* <Header /> */}
+            {children}
+          </ClerkProvider>
         </ThemeProvider>
       </body>
     </html>

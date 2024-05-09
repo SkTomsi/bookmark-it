@@ -7,13 +7,14 @@ import { redirect } from 'next/navigation';
 export async function getAllFolders() {
   const user = await IsAuthorized();
 
-  if (!user) {
-    throw new Error('Unauthorized');
+  if (!user.userId) {
+    console.log('unauthorized');
+    redirect('/');
   }
 
   const folders = await db.folder.findMany({
     where: {
-      userId: user.id,
+      userId: user.userId,
     },
     orderBy: {
       createdAt: 'desc',
@@ -26,7 +27,7 @@ export async function getAllFolders() {
 export async function getBookmarks(id: string) {
   const user = await IsAuthorized();
 
-  if (!user) {
+  if (!user.userId) {
     redirect('/');
   }
 

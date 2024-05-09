@@ -1,16 +1,10 @@
-import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
-import { UserDropdown } from '../UserDropdown';
 import SidebarContainer from './SidebarContainer';
 import { ModeToggle } from '../ui/mode-toggle';
+import { currentUser } from '@clerk/nextjs/server';
+import { UserDropdown } from '../UserDropdown';
 
 export default async function AvatarCard() {
-  const { getUser } = getKindeServerSession();
-
-  const user = await getUser();
-
-  if (!user?.id) {
-    return;
-  }
+  const user = await currentUser();
 
   return (
     <SidebarContainer>
@@ -18,11 +12,9 @@ export default async function AvatarCard() {
         Welcome Back,
       </h1>
       <div className="flex items-center gap-x-3">
-        <UserDropdown userImage={user.picture} />
+        <UserDropdown />
         <div className="flex justify-between w-full items-center">
-          <div className="font-semibold text-black">
-            {user.given_name} {user.family_name}
-          </div>
+          <div className="font-semibold text-black">{user?.fullName}</div>
           <ModeToggle />
         </div>
       </div>

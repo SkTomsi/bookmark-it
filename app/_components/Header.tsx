@@ -1,10 +1,10 @@
-import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { CreateFolderModal } from './modals/CreateFolderModal';
 import { CreateBookmarkModal } from './modals/CreateBookmarkModal';
+import { IsAuthorized } from '../_actions';
 
 export default async function Header() {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
+  const user = await IsAuthorized();
+
   return (
     <nav className="flex items-center justify-end  py-4">
       {user && (
