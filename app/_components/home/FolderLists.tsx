@@ -5,7 +5,7 @@ import React, { Suspense, useEffect, useState } from 'react';
 import { List } from '@/app/_interface';
 import { CreateFolderModal } from '../modals/CreateFolderModal';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
 import { Skeleton } from '../ui/skeleton';
 
 interface ListItemprops {
@@ -17,13 +17,14 @@ interface ListItemprops {
 
 function ListItem({ name, emoji, id, activeId }: ListItemprops) {
   const [isActive, setIsActive] = useState<boolean>(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    if (activeId) {
+    if (activeId && pathname.includes('/bookmarks/')) {
       const isActive = id === activeId;
       setIsActive(isActive);
     }
-  }, [id, activeId]);
+  }, [id, activeId, pathname]);
 
   return (
     <Link href={`/bookmarks/${id}`}>

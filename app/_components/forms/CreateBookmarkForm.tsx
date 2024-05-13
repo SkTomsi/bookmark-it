@@ -18,6 +18,7 @@ import {
 } from '../ui/select';
 import { FolderOptionList } from '@/app/_data-access/utils';
 import { SubmitButton } from './FormButtons';
+import { Loader2 } from 'lucide-react';
 
 const initialState = {
   message: '',
@@ -40,13 +41,16 @@ export function CreateBookmarkForm({
   const [state, formAction] = useFormState(CreateBookmark, initialState);
   const [options, setOptions] = useState<FolderOption[]>([]);
   const [folderId, setFolderId] = useState<string>(id);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    setIsLoading(true);
     async function getFolderOptions() {
       try {
         const { optionList } = await FolderOptionList();
 
         setOptions(optionList);
+        setIsLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -102,22 +106,30 @@ export function CreateBookmarkForm({
             <Label htmlFor="folder" className="text-right">
               Folder
             </Label>
-            <Select
-              onValueChange={(value) => setFolderId(value)}
-              defaultValue={id}
-            >
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Select your folder" />
-              </SelectTrigger>
-              <SelectContent>
-                {options.length > 0 &&
-                  options.map((option) => (
-                    <SelectItem value={option.value} key={option.value}>
-                      {option.emoji + ' ' + option.label}
-                    </SelectItem>
-                  ))}
-              </SelectContent>
-            </Select>
+            <div className="relative">
+              <Select
+                onValueChange={(value) => setFolderId(value)}
+                defaultValue={id}
+              >
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select your folder" />
+                </SelectTrigger>
+                {isLoading && (
+                  <div className="absolute left-2 top-1/2 transform -translate-y-[50%]">
+                    <Loader2 className="animate-spin" size={16} />
+                  </div>
+                )}
+
+                <SelectContent>
+                  {options.length > 0 &&
+                    options.map((option) => (
+                      <SelectItem value={option.value} key={option.value}>
+                        {option.emoji + ' ' + option.label}
+                      </SelectItem>
+                    ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </div>
         <DialogFooter>

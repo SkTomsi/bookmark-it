@@ -5,8 +5,8 @@ import { FolderLists } from './home/FolderLists';
 
 export default async function Sidebar() {
   const defaultList = [
-    { id: '1', name: 'Favourites', emoji: <Star /> },
-    { id: '2', name: 'Reading Lists', emoji: <BookText /> },
+    { id: 'favourites', name: 'Favourites', emoji: <Star /> },
+    { id: 'reading-list', name: 'Reading List', emoji: <BookText /> },
   ];
 
   const { folders } = await getAllFolders();

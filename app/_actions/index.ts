@@ -55,7 +55,10 @@ export async function CreateFolder(prevState: any, formData: unknown) {
     //     };
     //   }
     // }
-    throw e;
+    return {
+      message: 'Something went wrong!',
+      status: 'error',
+    };
   }
 }
 export async function CreateBookmark(prevState: any, formData: unknown) {
@@ -101,6 +104,9 @@ export async function CreateBookmark(prevState: any, formData: unknown) {
     //     };
     //   }
     // }
-    throw e;
+    return {
+      message: 'Something went wrong!',
+      status: 'error',
+    };
   }
 }

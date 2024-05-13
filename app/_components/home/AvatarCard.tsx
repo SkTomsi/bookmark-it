@@ -15,7 +15,7 @@ export default async function AvatarCard() {
         <UserDropdown />
         <div className="flex justify-between w-full items-center">
           <div className="font-semibold text-black">{user?.fullName}</div>
-          <ModeToggle />
+          {/* <ModeToggle /> */}
         </div>
       </div>
     </SidebarContainer>
