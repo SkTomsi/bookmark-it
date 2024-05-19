@@ -20,7 +20,7 @@ function ListItem({ name, emoji, id, activeId }: ListItemprops) {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (activeId && pathname.includes('/bookmarks/')) {
+    if (activeId && !pathname.includes('/bookmarks?query')) {
       const isActive = id === activeId;
       setIsActive(isActive);
     }
@@ -29,19 +29,19 @@ function ListItem({ name, emoji, id, activeId }: ListItemprops) {
   return (
     <Link href={`/bookmarks/${id}`}>
       <div
-        className={`flex p-1 items-center border border-transparent gap-x-2  hover:border-brand-neutral-5 hover:bg-brand-neutral-3 group rounded-[4px] ${
+        className={`flex p-[2px] items-center border border-transparent gap-x-2  hover:border-brand-neutral-5 hover:bg-brand-neutral-3 group rounded-[4px] ${
           isActive ? ' border-brand-neutral-8/30 bg-brand-neutral-3' : ''
         }`}
       >
         <div
-          className={`border border-brand-neutral-4 p-1 text-brand-neutral-8 rounded-[4px] group-hover:bg-brand-neutral-1 bg-white group-hover:border-brand-neutral-5 ${
+          className={`border text-[13px] border-brand-neutral-4 p-1 text-brand-neutral-8 rounded-[4px] group-hover:bg-brand-neutral-1 bg-white group-hover:border-brand-neutral-5 ${
             isActive ? 'bg-brand-neutral-1 border-brand-neutral-5' : ''
           }`}
         >
           {emoji}
         </div>
         <div
-          className={`text-sm font-medium text-brand-neutral-8 group-hover:text-brand-neutral-10 ${
+          className={`text-[13px] font-medium text-brand-neutral-8 group-hover:text-brand-neutral-10 ${
             isActive ? ' text-brand-neutral-10 font-[600]' : ''
           }`}
         >
@@ -63,7 +63,7 @@ export function FolderLists({ listHeading, list }: props) {
     <SidebarContainer>
       <Suspense fallback={<FolderLists.loading />}>
         <div className="flex flex-col gap-y-2">
-          <h1 className="text-sm  text-brand-gray-500 font-bold">
+          <h1 className="text-xs text-brand-gray-500 font-bold">
             {listHeading}
           </h1>
           <div className="">

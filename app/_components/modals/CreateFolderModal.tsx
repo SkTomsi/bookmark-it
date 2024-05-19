@@ -22,7 +22,7 @@ export function CreateFolderModal() {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant={'secondary'} className="flex gap-2">
-          <FolderPlus />
+          <FolderPlus size={18} />
           Add Folder
         </Button>
       </DialogTrigger>

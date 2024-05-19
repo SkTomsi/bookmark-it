@@ -8,13 +8,13 @@ export default async function AvatarCard() {
 
   return (
     <SidebarContainer>
-      <h1 className="text-xl font-extrabold text-primary mb-2">
+      <h1 className="text-sm font-extrabold text-primary mb-2">
         Welcome Back,
       </h1>
       <div className="flex items-center gap-x-3">
         <UserDropdown />
         <div className="flex justify-between w-full items-center">
-          <div className="font-semibold text-black">{user?.fullName}</div>
+          <div className="font-semibold text-black text-sm">{user?.fullName}</div>
           {/* <ModeToggle /> */}
         </div>
       </div>

@@ -27,7 +27,7 @@ export function CreateBookmarkModal() {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <AccentButton>
-          <BookmarkPlus />
+          <BookmarkPlus size={18} />
           Add Bookmark
         </AccentButton>
       </DialogTrigger>
