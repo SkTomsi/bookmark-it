@@ -106,12 +106,12 @@ export function CreateBookmarkForm({
             <Label htmlFor="folder" className="text-right">
               Folder
             </Label>
-            <div className="relative">
+            <div className="relative w-full">
               <Select
                 onValueChange={(value) => setFolderId(value)}
                 defaultValue={id}
               >
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select your folder" />
                 </SelectTrigger>
                 {isLoading && (

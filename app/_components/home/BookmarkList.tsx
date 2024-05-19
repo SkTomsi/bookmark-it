@@ -4,7 +4,7 @@ import { Skeleton } from '../ui/skeleton';
 
 export async function BookmarkList(props: { bookmarks: Bookmark[] }) {
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-5 gap-4">
       {props.bookmarks.map((bookmark) => {
         return <BookmarkCard bookmark={bookmark} key={bookmark.id} />;
       })}

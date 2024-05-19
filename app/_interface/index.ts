@@ -1,5 +1,3 @@
-import { ZodDate } from 'zod';
-
 interface List {
   id: string;
   name: string;

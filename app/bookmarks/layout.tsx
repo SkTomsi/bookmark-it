@@ -9,7 +9,7 @@ export default function BookmarkPageLayout({
   return (
     <>
       <div className="flex gap-x-4 ">
-        <div className="w-[244px] bg-white p-4 pr-0 h-screen overflow-y-auto">
+        <div className="bg-white p-4 pr-0 h-screen overflow-y-auto w-auto">
           <Sidebar />
         </div>
         <div className="flex-1 h-screen overflow-y-scroll p-4 pl-0">
