@@ -9,10 +9,10 @@ function BookmarkCard({ bookmark }: { bookmark: Bookmark }) {
         key={bookmark.id}
         className="border border-brand-neutral-5 bg-white rounded-[8px] overflow-hidden"
       >
-        <div className="aspect-ogimage bg-white">
+        <div className="aspect-ogimage bg-white relative">
           <img
             src={bookmark.ogImageUrl!}
-            className="aspect-ogimage object-cover"
+            className="aspect-ogimage object-contain absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             alt="og image"
           />
         </div>
