@@ -10,11 +10,17 @@ function BookmarkCard({ bookmark }: { bookmark: Bookmark }) {
         className="border border-brand-neutral-5 bg-white rounded-[8px] overflow-hidden"
       >
         <div className="aspect-ogimage bg-white relative">
-          <img
-            src={bookmark.ogImageUrl!}
-            className="aspect-ogimage object-contain absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            alt="og image"
-          />
+          {bookmark.ogImageUrl ? (
+            <img
+              src={bookmark.ogImageUrl}
+              className="aspect-ogimage object-contain absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              alt="og image"
+            />
+          ) : (
+            <div className="aspect-ogimage object-contain absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              {new URL(bookmark.url).hostname}
+            </div>
+          )}
         </div>
 
         <div className="py-2 px-3 font-semibold text-[13px] border-t border-t-brand-neutral-5 relative flex gap-x-1">
