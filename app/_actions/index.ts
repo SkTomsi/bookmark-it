@@ -1,6 +1,5 @@
 'use server';
 
-import { Prisma } from '@prisma/client';
 import db from '../lib/db';
 import { CreateBookmarkSchema, CreateFolderSchema } from '../lib/validations';
 import { revalidatePath } from 'next/cache';
@@ -47,6 +46,7 @@ export async function CreateFolder(prevState: any, formData: unknown) {
       status: true,
     };
   } catch (e) {
+
     // if (e instanceof Prisma.PrismaClientKnownRequestError) {
     //   if (e.code === 'P2002') {
     //     return {
@@ -80,12 +80,13 @@ export async function CreateBookmark(prevState: any, formData: unknown) {
   try {
     const result = await unfurl(validatedData.data.url);
 
+
     await db.bookmark.create({
       data: {
         url: validatedData.data.url,
         folderId: validatedData.data.folderId,
         iconUrl: result.favicon,
-        ogImageUrl: result.open_graph.images?.[0].url ?? result.open_graph.url,
+        ogImageUrl: result.open_graph?.images?.[0].url ?? result.open_graph?.url ?? '',
       },
     });
 
@@ -96,6 +97,7 @@ export async function CreateBookmark(prevState: any, formData: unknown) {
       status: true,
     };
   } catch (e) {
+
     // if (e instanceof Prisma.PrismaClientKnownRequestError) {
     //   if (e.code === 'P2002') {
     //     return {
