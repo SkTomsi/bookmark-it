@@ -24,20 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={manrope.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ClerkProvider signInFallbackRedirectUrl="/bookmarks">
-            <NextTopLoader color="#7c3aed" showSpinner={false} />
-            <Toaster richColors />
+        <ClerkProvider signInFallbackRedirectUrl="/bookmarks">
+          <NextTopLoader color="#7c3aed" showSpinner={false} />
+          <Toaster richColors />
 
-            {/* <Header /> */}
-            {children}
-          </ClerkProvider>
-        </ThemeProvider>
+          {/* <Header /> */}
+          {children}
+        </ClerkProvider>
       </body>
     </html>
   );

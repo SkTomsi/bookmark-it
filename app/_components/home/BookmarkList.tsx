@@ -2,13 +2,26 @@ import { Bookmark } from '@prisma/client';
 import BookmarkCard from './BookmarkCard';
 import { Skeleton } from '../ui/skeleton';
 
-export async function BookmarkList(props: { bookmarks: Bookmark[] }) {
+export async function BookmarkList(props: {
+  bookmarks: Bookmark[];
+  type: 'from-search' | 'from-folder';
+}) {
   return (
-    <div className="grid grid-cols-5 gap-4">
-      {props.bookmarks.map((bookmark) => {
-        return <BookmarkCard bookmark={bookmark} key={bookmark.id} />;
-      })}
-    </div>
+    <>
+      {props.bookmarks?.length > 0 ? (
+        <div className="grid grid-cols-5 gap-4">
+          {props.bookmarks.map((bookmark) => {
+            return <BookmarkCard bookmark={bookmark} key={bookmark.id} />;
+          })}
+        </div>
+      ) : (
+        <div>
+          {props.type === 'from-folder'
+            ? 'No Bookmarks created yet!'
+            : 'No bookmarks found!'}
+        </div>
+      )}
+    </>
   );
 }
 

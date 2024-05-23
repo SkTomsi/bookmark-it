@@ -19,7 +19,7 @@ export default async function Bookmarks({
   return (
     <BookmarksContainer>
       <Suspense fallback={<BookmarkList.loading />}>
-        <BookmarkList bookmarks={bookmarks} />
+        <BookmarkList bookmarks={bookmarks} type="from-folder" />
       </Suspense>
     </BookmarksContainer>
   );

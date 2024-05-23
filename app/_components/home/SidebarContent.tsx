@@ -28,7 +28,7 @@ export default function SidebarContent(props: { folders: Folder[] }) {
         )}
       </div> */}
       <AvatarCard />
-      <FolderLists listHeading="Your Lists" list={defaultList} />
+      {/* <FolderLists listHeading="Your Lists" list={defaultList} /> */}
       <FolderLists listHeading="Your Folders" list={props.folders} />
     </>
   );

@@ -3,6 +3,7 @@ import 'server-only';
 import { IsAuthorized } from '../_actions';
 import db from '../lib/db';
 import { redirect } from 'next/navigation';
+import { User } from 'lucide-react';
 
 export async function getAllFolders() {
   const user = await IsAuthorized();
@@ -37,6 +38,31 @@ export async function getBookmarks(id: string) {
     },
     orderBy: {
       createdAt: 'desc',
+    },
+  });
+
+  return { bookmarks };
+}
+
+export async function SearchBookmarksAction(
+  searchQuery: string | string[] | undefined,
+) {
+  const user = await IsAuthorized();
+  const bookmarks = await db.bookmark.findMany({
+    where: {
+      AND: [
+        {
+          Folder: {
+            userId: user.userId,
+          },
+        },
+        {
+          url: {
+            contains: searchQuery as string
+            ,
+          },
+        },
+      ],
     },
   });
 
