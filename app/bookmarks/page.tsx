@@ -16,7 +16,7 @@ export default async function BoookmarksPage({
 
   return (
     <BookmarksContainer>
-      <SearchResults searchQuery={searchParams.query.toLowerCase()} />
+      <SearchResults searchQuery={searchParams?.query?.toLowerCase()} />
     </BookmarksContainer>
   );
 }
